@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export default function ToggleColorTheme() {
-  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
+
+  useLayoutEffect(() => {
+    setIsDarkModeEnabled(
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+  }, []);
 
   useEffect(() => {
     if (isDarkModeEnabled) {
