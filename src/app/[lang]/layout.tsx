@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../../globals.css";
 import { Roboto_Mono } from "next/font/google";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
