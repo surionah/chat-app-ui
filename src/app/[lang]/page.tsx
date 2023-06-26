@@ -1,4 +1,4 @@
-import { useTranslation } from "../i18n";
+import { useTranslation } from "@/app/i18n";
 import ToggleColorTheme from "../components/ToggleColorTheme/toggleColorTheme";
 
 interface PageParams {
@@ -12,7 +12,7 @@ export default async function Home({ params: { lang } }: PageParams) {
 
   return (
     <main className="bg-white dark:bg-black">
-      <ToggleColorTheme />
+      <ToggleColorTheme lang={lang} />
       <p className="text-primary">
         {t("title")}
         <span className="font-bold"> surionah</span>
