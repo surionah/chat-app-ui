@@ -2,6 +2,7 @@ import "../../globals.css";
 import { Roboto_Mono } from "next/font/google";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
+import Sidebar from "../components/Sidebar/sidebar";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
 
@@ -27,7 +28,10 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang={lang} dir={dir(lang)}>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} flex`}>
+        <Sidebar />
+        {children}
+      </body>
     </html>
   );
 }
