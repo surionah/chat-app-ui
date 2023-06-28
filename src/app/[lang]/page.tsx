@@ -11,12 +11,11 @@ export default async function Home({ params: { lang } }: PageParams) {
   const { t } = await useTranslation(lang);
 
   return (
-    <main className="bg-white dark:bg-black">
-      <ToggleColorTheme lang={lang} />
+    <div className="bg-white dark:bg-black">
       <p className="text-primary">
         {t("title")}
         <span className="font-bold"> surionah</span>
       </p>
-    </main>
+    </div>
   );
 }
