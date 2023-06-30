@@ -1,4 +1,8 @@
 {
+  "header": {
+    "es": "ES",
+    "en": "IN"
+  },
   "sidebar": {
     "links": {
       "people": "Personas",

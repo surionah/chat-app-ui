@@ -7,15 +7,22 @@ export default function ToggleColorTheme() {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
 
   useLayoutEffect(() => {
-    setIsDarkModeEnabled(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
+    const darkModeLocalStorage = localStorage.getItem("darkMode");
+    if (darkModeLocalStorage) {
+      setIsDarkModeEnabled(darkModeLocalStorage === "on");
+    } else {
+      setIsDarkModeEnabled(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    }
   }, []);
 
   useEffect(() => {
     if (isDarkModeEnabled) {
+      localStorage.setItem("darkMode", "on");
       document.documentElement.classList.add("dark");
     } else {
+      localStorage.setItem("darkMode", "off");
       document.documentElement.classList.remove("dark");
     }
   }, [isDarkModeEnabled]);

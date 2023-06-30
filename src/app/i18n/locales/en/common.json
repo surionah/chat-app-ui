@@ -1,4 +1,8 @@
 {
+  "header": {
+    "es": "SP",
+    "en": "EN"
+  },
   "sidebar": {
     "links": {
       "people": "People",

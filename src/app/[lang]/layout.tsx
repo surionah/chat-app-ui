@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body className={`${inter.className} h-screen`}>
-        <Header />
+        <Header lang={lang} />
         <div className="flex h-[calc(100%_-_3rem)]">
           <Sidebar lang={lang} />
           <main className="w-full h-full bg-white dark:bg-black">
