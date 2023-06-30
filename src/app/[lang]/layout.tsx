@@ -1,9 +1,9 @@
-import "../../globals.css";
 import { Roboto_Mono } from "next/font/google";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import Sidebar from "../components/Sidebar/sidebar";
 import Header from "../components/Header/header";
+import "../../globals.css";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
 
