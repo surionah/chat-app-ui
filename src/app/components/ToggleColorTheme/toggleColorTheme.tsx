@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
+import { MoonIcon } from "@heroicons/react/24/solid";
 
 interface ToggleColorThemeProps {
   lang: string;
@@ -26,14 +27,11 @@ export default function ToggleColorTheme({ lang }: ToggleColorThemeProps) {
   }, [isDarkModeEnabled]);
 
   return (
-    <div className="w-36 flex justify-around text-black dark:text-white">
-      <p>{t("color_theme.label")}</p>
-      <div
+    <div className="w-12 flex justify-around text-black dark:text-white">
+      <MoonIcon
+        className="w-6 h-6 dark:text-primary text-white stroke-primary stroke-2 hover:cursor-pointer"
         onClick={() => setIsDarkModeEnabled(!isDarkModeEnabled)}
-        className="bg-white w-8 rounded-2xl border-2 border-primary h-6"
-      >
-        <div className="w-4 rounded-2xl h-full dark:bg-primary border-2 border-primary dark:ml-3"></div>
-      </div>
+      />
     </div>
   );
 }
