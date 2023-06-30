@@ -1,5 +1,8 @@
 {
-  "color_theme": {
-    "label": "Dark mode"
+  "sidebar": {
+    "links": {
+      "people": "People",
+      "groups": "Groups"
+    }
   }
 }

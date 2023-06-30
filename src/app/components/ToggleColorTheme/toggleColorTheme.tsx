@@ -1,16 +1,10 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useState } from "react";
-import { useTranslation } from "@/app/i18n/client";
 import { MoonIcon } from "@heroicons/react/24/solid";
 
-interface ToggleColorThemeProps {
-  lang: string;
-}
-
-export default function ToggleColorTheme({ lang }: ToggleColorThemeProps) {
+export default function ToggleColorTheme() {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
-  const { t } = useTranslation(lang, "common");
 
   useLayoutEffect(() => {
     setIsDarkModeEnabled(

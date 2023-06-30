@@ -1,5 +1,4 @@
 import { useTranslation } from "@/app/i18n";
-import ToggleColorTheme from "../components/ToggleColorTheme/toggleColorTheme";
 
 interface PageParams {
   params: {
@@ -7,7 +6,7 @@ interface PageParams {
   };
 }
 
-export default async function Home({ params: { lang } }: PageParams) {
+export default async function HomePage({ params: { lang } }: PageParams) {
   const { t } = await useTranslation(lang);
 
   return (

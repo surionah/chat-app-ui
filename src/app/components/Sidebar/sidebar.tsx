@@ -8,10 +8,16 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/solid";
+import { useTranslation } from "@/app/i18n/client";
 
-export default function Sidebar() {
+interface SidebarProps {
+  lang: string;
+}
+
+export default function Sidebar({ lang }: SidebarProps) {
   const pathname = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { t } = useTranslation(lang, "common");
 
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -29,7 +35,7 @@ export default function Sidebar() {
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}
         >
           <UserIcon className="h-8 w-8" />
-          {!isCollapsed && "People"}
+          {!isCollapsed && t("sidebar.links.people")}
         </Link>
         <Link
           href="/groups"
@@ -38,7 +44,7 @@ export default function Sidebar() {
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}
         >
           <UserGroupIcon className="h-8 w-8" />
-          {!isCollapsed && "Groups"}
+          {!isCollapsed && t("sidebar.links.groups")}
         </Link>
       </div>
       {isCollapsed ? (
