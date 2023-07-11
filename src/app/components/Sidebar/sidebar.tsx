@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import Link from "next/link";
 import { UserIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
@@ -9,19 +9,21 @@ import {
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/solid";
 import { useTranslation } from "@/app/i18n/client";
+import useLanguageDetector from "@/app/hooks/UseLanguageDetector/useLanguageDetector";
 
-interface SidebarProps {
-  lang: string;
-}
-
-export default function Sidebar({ lang }: SidebarProps) {
+export default function Sidebar() {
   const pathname = usePathname();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const { lang } = useLanguageDetector();
   const { t } = useTranslation(lang, "common");
 
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  useLayoutEffect(() => {
+    setIsCollapsed(false);
+  }, []);
 
   return (
     <aside

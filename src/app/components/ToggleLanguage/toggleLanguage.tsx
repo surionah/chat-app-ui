@@ -3,21 +3,19 @@
 import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "@/app/i18n/client";
+import useLanguageDetector from "@/app/hooks/UseLanguageDetector/useLanguageDetector";
 
-interface ToggleLanguageProps {
-  lang: string;
-}
-
-export default function ToggleLanguage({ lang }: ToggleLanguageProps) {
+export default function ToggleLanguage() {
   const pathname = usePathname();
   const { push } = useRouter();
+  const { lang } = useLanguageDetector();
   const { t } = useTranslation(lang, "common");
 
   const isEnglishSelected = useMemo(() => lang === "en", [lang]);
 
   const handleToggleLanguage = () => {
     let newPathname;
-    if (pathname.includes("/en")) {
+    if (isEnglishSelected) {
       newPathname = pathname.replace("/en", "/es");
     } else {
       newPathname = pathname.replace("/es", "/en");
@@ -37,6 +35,7 @@ export default function ToggleLanguage({ lang }: ToggleLanguageProps) {
       >
         {t("header.en")}
       </p>
+      -
       <p
         className={`text-black dark:text-white ${
           !isEnglishSelected && "text-primary dark:!text-primary"

@@ -7,7 +7,7 @@ interface PageParams {
 }
 
 export default async function HomePage({ params: { lang } }: PageParams) {
-  const { t } = await useTranslation(lang);
+  const { t } = await useTranslation(lang, "home");
 
   return (
     <div className="bg-white dark:bg-black">
