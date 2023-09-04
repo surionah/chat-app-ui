@@ -30,7 +30,7 @@ export default function ToggleColorTheme() {
   return (
     <div className="w-12 flex justify-around text-black dark:text-white">
       <MoonIcon
-        className="w-6 h-6 dark:text-primary text-white stroke-primary stroke-2 hover:cursor-pointer"
+        className="w-6 dark:text-primary text-white stroke-primary stroke-2 hover:cursor-pointer"
         onClick={() => setIsDarkModeEnabled(!isDarkModeEnabled)}
       />
     </div>

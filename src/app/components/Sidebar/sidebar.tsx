@@ -36,7 +36,7 @@ export default function Sidebar() {
             pathname.includes("people") && "text-primary dark:!text-primary"
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}
         >
-          <UserIcon className="h-8 w-8" />
+          <UserIcon className="w-8" />
           {!isCollapsed && t("sidebar.links.people")}
         </Link>
         <Link
@@ -45,18 +45,18 @@ export default function Sidebar() {
             pathname.includes("groups") && "text-primary dark:!text-primary"
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}
         >
-          <UserGroupIcon className="h-8 w-8" />
+          <UserGroupIcon className="w-8" />
           {!isCollapsed && t("sidebar.links.groups")}
         </Link>
       </div>
       {isCollapsed ? (
         <ChevronDoubleRightIcon
-          className="w-8 h-8 text-black dark:text-white"
+          className="w-8 text-black dark:text-white"
           onClick={handleToggleCollapse}
         />
       ) : (
         <ChevronDoubleLeftIcon
-          className="w-8 h-8 text-black dark:text-white"
+          className="w-8 text-black dark:text-white"
           onClick={handleToggleCollapse}
         />
       )}
