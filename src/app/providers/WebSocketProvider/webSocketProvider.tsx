@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext } from "react";
 import useWebSocket from "react-use-websocket";
+import { useAtom } from "jotai";
+import { isConnectedToWs } from "@/app/state";
 
 const socketUrl = "ws://localhost:8000/ws";
 
@@ -13,9 +15,11 @@ interface WebSocketsEvents {
 const WebSocketContext = createContext<WebSocketsEvents | null>(null);
 
 const WebSocketProvider = ({ children }: { children: React.ReactNode }) => {
+  const [_, setIsConnected] = useAtom(isConnectedToWs);
   const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
-    onOpen: () => console.log("opened"),
+    onOpen: () => setIsConnected(true),
     shouldReconnect: (closeEvent) => true,
+    onClose: () => setIsConnected(false),
   });
 
   return (
