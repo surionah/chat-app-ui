@@ -1,39 +1,44 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { useWebSocketContext } from "@/app/providers/WebSocketProvider/webSocketProvider";
+interface InputProps {
+  onChangeValue: (value: string) => void;
+  value: string;
+  showLabel?: boolean;
+  label?: string;
+  placeholder: string;
+  onKeyEnter?: () => void;
+  name: string;
+}
 
-export default function Input() {
-  const [message, setMessage] = useState("");
-  const { sendMessage } = useWebSocketContext();
-
+export default function Input({
+  onChangeValue,
+  value,
+  showLabel = false,
+  label = "",
+  placeholder,
+  onKeyEnter = () => {},
+  name,
+}: InputProps) {
   const handleChangeMessage = (event: React.FormEvent<HTMLInputElement>) => {
-    setMessage(event.currentTarget.value);
+    onChangeValue(event.currentTarget.value);
   };
-
-  const handleSendMessage = useCallback(() => {
-    sendMessage?.(message);
-    setMessage("");
-  }, [message, sendMessage, setMessage]);
 
   const handleEnterKeyEvent = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
-    event.key === "Enter" && handleSendMessage();
+    event.key === "Enter" && onKeyEnter();
   };
 
   return (
-    <div className="input flex gap-2">
+    <div className="flex flex-col ">
+      {showLabel ? <label htmlFor={name}>{label}</label> : null}
       <input
+        id={name}
         className="appearance-none rounded-md flex-1 px-4"
         onChange={handleChangeMessage}
-        value={message}
+        value={value}
+        placeholder={placeholder}
         onKeyUp={handleEnterKeyEvent}
-      />
-      <PaperAirplaneIcon
-        className="w-10 text-primary"
-        onClick={handleSendMessage}
       />
     </div>
   );
