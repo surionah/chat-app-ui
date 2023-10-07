@@ -10,7 +10,7 @@ export default function ChatInput() {
   const { sendMessage } = useWebSocketContext();
 
   const handleSendMessage = useCallback(() => {
-    sendMessage?.(JSON.stringify({ user: "Sergio", message }));
+    sendMessage?.({ user: "Sergio", message });
     setMessage("");
   }, [message, sendMessage, setMessage]);
 

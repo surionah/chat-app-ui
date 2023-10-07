@@ -31,7 +31,7 @@ export default function Sidebar() {
     >
       <div className="flex flex-col gap-6">
         <Link
-          href="/people"
+          href="/chat/people"
           className={`${
             pathname.includes("people") && "text-primary dark:!text-primary"
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}
@@ -40,7 +40,7 @@ export default function Sidebar() {
           {!isCollapsed && t("sidebar.links.people")}
         </Link>
         <Link
-          href="/groups"
+          href="/chat/groups"
           className={`${
             pathname.includes("groups") && "text-primary dark:!text-primary"
           } text-black dark:text-white hover:underline hover:text-primary dark:hover:text-primary flex items-center gap-2`}

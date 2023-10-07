@@ -5,19 +5,20 @@ import Modal from "../Modal/modal";
 import Input from "../Input/input";
 import { nickname } from "@/app/state";
 import { useAtom } from "jotai";
+import { useRouter } from "next/navigation";
 
 export default function EnterForm() {
-  const [isOpen, setisOpen] = useState(true);
   const [name, setName] = useState("");
   const [_, setNickName] = useAtom(nickname);
+  const router = useRouter();
 
   const handleSubmit = () => {
     setNickName(name);
-    setisOpen(false);
+    router.push("chat");
   };
 
   return (
-    <Modal open={isOpen}>
+    <Modal open>
       <form name="enter-form" onSubmit={handleSubmit}>
         <Input
           value={name}
